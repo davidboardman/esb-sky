@@ -2,7 +2,6 @@
 //getImage.php
 
 include_once('includes/colorsofimage.class.php');
-ini_set('memory_limit', '128M');
 date_default_timezone_set("America/New_York"); 
 
 // variables color images
@@ -56,7 +55,4 @@ function getColors($img){
 	return $filename;
 }
 
-function renameFile(){
-
-}
 ?>
