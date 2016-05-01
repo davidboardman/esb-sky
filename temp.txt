@@ -1,0 +1,2 @@
+# crontab -e
+*/5 * * * * /usr/bin/curl -o temp.txt http://localhost:8000/getImage.php
