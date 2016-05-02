@@ -1,12 +1,19 @@
 <?php
 //getImage.php
 
+// cron job
+$page=$_SERVER['PHP_SELF'];
+$minutes=10;
+$minutes*=60;
+header("Refresh: $minutes; url=$page");
+
 include_once('includes/colorsofimage.class.php');
 date_default_timezone_set("America/New_York"); 
 
 // variables color images
-$precision=50;
-$maxColors=10;
+$precision=20;
+$maxColors=3;
+
 
 
 // image source and storing folder
@@ -56,3 +63,5 @@ function getColors($img){
 }
 
 ?>
+
+<h1>ESB - Get Image</h1>

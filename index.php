@@ -1,6 +1,8 @@
 <?php
 //index.php
 date_default_timezone_set("America/New_York"); 
+$imgW=150;
+$imgH=150;
 $esbHtml="";
 
 $items = glob("images/*.jpg", GLOB_NOSORT);
@@ -16,8 +18,9 @@ foreach($items as $filename){
 		$backgroundColor=getBackgroundColor($colors);
 		//print_r($colors);
 
-		$timeStamp=date ("F d Y h:i:sa", filemtime('images/'.$filename));
-		$esbHtml.='<div class="esb"><div class="bg" style="background-color:#999">'.$timeStamp.$spanHtml.'</div><div class="esbImg"><img src="images/'.$filename.'" /></div></div>';
+		$timeStamp=date ("F d, Y * h:ia", filemtime('images/'.$filename));
+		$timeStamp='<div class="timeStamp">'.str_replace("*","<br/>",$timeStamp).'</div>';
+		$esbHtml.='<div class="esb"><div class="bg" style="background-color:#'.$backgroundColor.'">'.$timeStamp.$spanHtml.'</div><div class="esbImg"><img src="images/'.$filename.'" /></div></div>';
 	}
 }
 
@@ -40,22 +43,32 @@ foreach($items as $filename){
 		font-family: 'Playfair Display', serif;
 	}
 
+	h1{
+		position: absolute;
+		z-index: 99999;
+		left: 50px;
+		font-size: 120px;
+		color: #fff;
+	}
+
 	.esb{
 		position: relative;
 		float: left;
-		width: 200px;
-		height: 200px;
+		width: <?php echo $imgW;?>px;
+		height: <?php echo $imgH;?>px;
 	}
 
 	.esb img{
-		width: 200px;
-		height: 200px;	
+		width: <?php echo $imgW;?>px;
+		height: <?php echo $imgH;?>px;
 	}
 
 	.bg{
 		position: absolute;
 		left:0;top:0;right:0;bottom:0;
 		z-index:-1;
+		text-align: center;
+		padding: 20px 0 0 0;
 	}
 
 	.esbImg{
@@ -68,15 +81,36 @@ foreach($items as $filename){
 		display: block;
 		width: 20px;
 		height: 20px;
-		border: 1px solid #fff;
 		float: left;
+	}
+
+	.spanDiv{
+		position:absolute;
+		overflow: hidden;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		width: 40px;
+		height: 20px;
+		margin: auto;
+		text-align: center;
+		border: 1px solid #fff;
+	}
+
+	.timeStamp{
+		height: auto;
+		margin: auto;
+		color: #fff;
+		font-size: 10pt;
 	}
 
 	</style>
 
   </head>
   <body>
-  
+<h1>Empire (2016)</h1>
+
+
 <?php echo $esbHtml;?>
 
 <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
@@ -85,7 +119,6 @@ foreach($items as $filename){
 
 $(".esb").hover(function() {
 	$(this).children('.esbImg').fadeToggle(200, "linear" )
-	//$(this).children('.bg').fadeToggle(200, "linear" );
 });
 
 </script>
@@ -100,10 +133,11 @@ function getBackgroundColor($ar){
 }
 
 function getESBColors($ar){
-	$html="";
+	$html="<div class='spanDiv'>";
 	foreach($ar as $sky){
 		$html.='<span class="esbColors" style="background-color:#'.$sky.'"></span>';
 	}
+	$html.="</div>";
 	return $html;
 }	
 
