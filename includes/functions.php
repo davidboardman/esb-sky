@@ -12,7 +12,8 @@ $imgH=120;
 
 
 function listAllImages(){
-	$items = glob("https://empirestatebuilding.herokuapp.com/*.jpg", GLOB_NOSORT);
+	$items = glob("../images/*.jpg", GLOB_NOSORT);
+	print_r($items);
 	array_multisort(array_map('filemtime', $items), SORT_NUMERIC, SORT_DESC, $items);
 	return $items;
 }
