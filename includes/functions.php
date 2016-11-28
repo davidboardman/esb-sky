@@ -15,7 +15,7 @@ function listAllImages(){
 	$items = glob("../images/*.jpg", GLOB_NOSORT);
 	//array_multisort(array_map('filemtime', $items), SORT_NUMERIC, SORT_DESC, $items);
 	usort($items, function ($a, $b) {
-	   return filemtime($a) < filemtime($b);
+	   return filectime($a) < filectime($b);
 	});
 	return $items;
 }
@@ -34,7 +34,7 @@ function generateImages($items){
 			
 			$paletteHtml=getESBColors($colors);
 			$backgroundColor=getBackgroundColor($colors);
-			$timeStamp=date ("F d, Y * h:ia", filemtime("../images/".$filename));
+			$timeStamp=date ("F d, Y * h:ia", filectime("../images/".$filename));
 			$timeStamp='<p>'.str_replace("*","<br/>",$timeStamp).'</p>';
 
 			$esbHtml.='<div class="esb" style="background-color:#'.$backgroundColor.'"><div class="esbImg">
