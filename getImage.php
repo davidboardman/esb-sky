@@ -24,7 +24,7 @@ $maxColors=3;
 
 
 $url="http://cam.sheratontribecaview.com/sheraton-tribeca-new-york-hotel.jpg";
-$folder="/home/dabo/public_html/empire/images/";
+$folder="/app/images/";
 
 // get remote ESB image, crop it, and save it locally
 if(url_exists($url)){

@@ -3,7 +3,7 @@
   "description": "A window on the Empire State Building, wherever you are.",
   "version": "1.0.2",
   "manifest_version": 2,
-  "homepage_url": "http://tinktank.it/empire/", 
+  "homepage_url": "https://empirestatebuilding.herokuapp.com/", 
   "icons": {
     "16": "icon16.png",
     "32": "icon32.png",
@@ -16,7 +16,7 @@
   },
   "permissions": [
     "tabs",
-    "http://tinktank.it/empire/*"
+    "https://empirestatebuilding.herokuapp.com/*"
   ],
   "browser_action": {}
 }

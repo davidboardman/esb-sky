@@ -1,4 +1,4 @@
 chrome.browserAction.onClicked.addListener(function(activeTab) {
-  var newURL = "http://tinktank.it/empire/";
+  var newURL = "https://empirestatebuilding.herokuapp.com/";
   chrome.tabs.create({ url: newURL });
 });
