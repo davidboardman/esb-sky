@@ -13,7 +13,6 @@ $imgH=120;
 
 function listAllImages(){
 	$items = glob("../images/*.jpg", GLOB_NOSORT);
-	print_r($items);
 	array_multisort(array_map('filemtime', $items), SORT_NUMERIC, SORT_DESC, $items);
 	return $items;
 }
