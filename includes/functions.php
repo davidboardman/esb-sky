@@ -15,7 +15,7 @@ function listAllImages(){
 	$items = glob("../images/*.jpg", GLOB_NOSORT);
 	//array_multisort(array_map('filemtime', $items), SORT_NUMERIC, SORT_DESC, $items);
 	usort($items, function ($a, $b) {
-	   return filemtime($b) - filemtime($a);
+	   return filemtime($a) < filemtime($b);
 	});
 	return $items;
 }
